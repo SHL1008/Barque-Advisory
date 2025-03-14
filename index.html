@@ -256,30 +256,16 @@
     </section>
     <section class="content" id="services">
         <h3>Our Services</h3>
-        <div class="services">
-            <div class="service"><h4>Tax Planning</h4><p>Strategize your taxes with our expert planning services.</p></div>
-            <div class="service"><h4>Corporate Tax Solutions</h4><p>Comprehensive tax solutions for businesses.</p></div>
-            <div class="service"><h4>Personal Tax Advisory</h4><p>Customized advice to help individuals manage their tax obligations.</p></div>
-            <div class="service"><h4>Tax Audit Support</h4><p>Addressing findings from tax audits.</p></div>
-            <div class="service"><h4>Tax Objection</h4><p>Challenging tax decisions.</p></div>
-            <div class="service"><h4>Tax Investigation Support</h4><p>Addressing findings from tax investigations.</p></div>
-            <div class="service"><h4>Liaise with TRA</h4><p>Handles communication with the Tanzania Revenue Authority.</p></div>
-            <div class="service"><h4>Tax Health Check</h4><p>Comprehensive tax reviews.</p></div>
-            <div class="service"><h4>Tax Advisory</h4><p>Expert tax advice.</p></div>
-            <div class="service"><h4>Tax Computation</h4><p>Calculating corporate tax for final return.</p></div>
-            <div class="service"><h4>Tax Preparation and Filing</h4><p>Preparing and submitting tax returns.</p></div>
-            <div class="service"><h4>Payroll Services</h4><p>Managing payroll.</p></div>
-            <div class="service"><h4>Accounting Software Training</h4><p>Training on software like QuickBooks, Xero, etc.</p></div>
-            <div class="service"><h4>Business Name Registration</h4><p>Assists with registering a business name.</p></div>
-            <div class="service"><h4>Company Registration</h4><p>Provides services to officially register a new company.</p></div>
+        <div class="services" id="services-container">
+            <!-- Services will be dynamically loaded here -->
         </div>
     </section>
     <section class="content" id="contact">
         <h3>Contact Us</h3>
-        <form class="contact-form">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <textarea placeholder="Your Message" rows="5" required></textarea>
+        <form class="contact-form" id="contact-form">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
             <button type="submit">Send Message</button>
         </form>
         <p>Email: <a href="mailto:info@barqueadvisory.com">info@barqueadvisory.com</a></p>
@@ -295,5 +281,70 @@
         </div>
         <p>&copy; 2024 Barque Advisory. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Dynamic loading of services
+        const services = [
+            { title: "Tax Planning", description: "Strategize your taxes with our expert planning services." },
+            { title: "Corporate Tax Solutions", description: "Comprehensive tax solutions for businesses." },
+            { title: "Personal Tax Advisory", description: "Customized advice to help individuals manage their tax obligations." },
+            { title: "Tax Audit Support", description: "Addressing findings from tax audits." },
+            { title: "Tax Objection", description: "Challenging tax decisions." },
+            { title: "Tax Investigation Support", description: "Addressing findings from tax investigations." },
+            { title: "Liaise with TRA", description: "Handles communication with the Tanzania Revenue Authority." },
+            { title: "Tax Health Check", description: "Comprehensive tax reviews." },
+            { title: "Tax Advisory", description: "Expert tax advice." },
+            { title: "Tax Computation", description: "Calculating corporate tax for final return." },
+            { title: "Tax Preparation and Filing", description: "Preparing and submitting tax returns." },
+            { title: "Payroll Services", description: "Managing payroll." },
+            { title: "Accounting Software Training", description: "Training on software like QuickBooks, Xero, etc." },
+            { title: "Business Name Registration", description: "Assists with registering a business name." },
+            { title: "Company Registration", description: "Provides services to officially register a new company." }
+        ];
+
+        const servicesContainer = document.getElementById('services-container');
+        services.forEach(service => {
+            const serviceDiv = document.createElement('div');
+            serviceDiv.className = 'service';
+            serviceDiv.innerHTML = `<h4>${service.title}</h4><p>${service.description}</p>`;
+            servicesContainer.appendChild(serviceDiv);
+        });
+
+        // Form submission handling
+        document.getElementById('contact-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            // Example: Send data to a backend endpoint
+            fetch('/submit-form', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name, email, message }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('Message sent successfully!');
+                document.getElementById('contact-form').reset();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Failed to send message. Please try again.');
+            });
+        });
+    </script>
 </body>
 </html>
