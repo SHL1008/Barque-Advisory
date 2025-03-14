@@ -4,89 +4,212 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Barque Advisory - Tax Consulting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
+        /* General Styles */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #ffffff;
             color: #004b8d;
+            line-height: 1.6;
         }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header */
         header {
-            background-color: #f26101; /* Professional Orange */
+            background-color: #004b8d;
             color: #ffffff;
             padding: 1rem 0;
             text-align: center;
-            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 1rem;
+            flex-wrap: wrap;
         }
+
         header img {
             height: 70px;
             width: auto;
         }
+
         header h1 {
             margin: 0;
             font-size: 2.5rem;
+            font-weight: 700;
         }
+
+        header p {
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        /* Navigation */
         nav {
             display: flex;
             justify-content: center;
-            background-color: #004b8d; /* Professional Blue */
+            background-color: #f26101;
+            padding: 0.5rem 0;
         }
+
         nav a {
             color: #ffffff;
-            text-decoration: none;
             padding: 1rem 2rem;
-            display: block;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
         }
+
         nav a:hover {
-            background-color: #f26101; /* Professional Orange */
+            background-color: #004b8d;
         }
+
+        /* Hero Section */
         .hero {
-            background: url('https://example.com/hero-image.jpg') no-repeat center center/cover;
-            height: 50vh;
+            background: linear-gradient(rgba(0, 75, 141, 0.7), rgba(242, 97, 1, 0.7)), url('https://example.com/hero-image.jpg') no-repeat center center/cover;
+            height: 60vh;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #ffffff;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            text-align: center;
         }
+
         .hero h2 {
-            font-size: 2rem;
+            font-size: 2.5rem;
+            font-weight: 700;
             margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
+
+        /* Content Sections */
         .content {
             padding: 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
+
         .content h3 {
             color: #f26101;
+            font-size: 2rem;
+            margin-bottom: 1rem;
         }
+
         .services {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
             margin-top: 1rem;
         }
+
         .service {
-            flex: 1;
-            min-width: 300px;
-            padding: 1rem;
             background: #ffffff;
-            border: 1px solid #004b8d;
+            border: 1px solid #e0e0e0;
             border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
+        .service:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .service h4 {
+            color: #004b8d;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .service p {
+            color: #555;
+            font-size: 1rem;
+        }
+
+        /* Contact Section */
+        .contact-form {
+            display: grid;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .contact-form button {
+            background-color: #f26101;
+            color: #ffffff;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: #004b8d;
+        }
+
+        /* Footer */
         footer {
             background-color: #004b8d;
             color: #ffffff;
             text-align: center;
-            padding: 1rem 0;
+            padding: 2rem 0;
             margin-top: 2rem;
+        }
+
+        footer .social-links {
+            margin-bottom: 1rem;
+        }
+
+        footer .social-links a {
+            color: #ffffff;
+            margin: 0 0.5rem;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        footer .social-links a:hover {
+            color: #f26101;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            nav a {
+                padding: 1rem;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .content h3 {
+                font-size: 1.75rem;
+            }
         }
     </style>
 </head>
@@ -132,10 +255,21 @@
     </section>
     <section class="content" id="contact">
         <h3>Contact Us</h3>
+        <form class="contact-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
         <p>Email: <a href="mailto:info@barqueadvisory.com">info@barqueadvisory.com</a></p>
         <p>Phone: +255 756 035 743</p>
     </section>
     <footer>
+        <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
         <p>&copy; 2024 Barque Advisory. All rights reserved.</p>
     </footer>
 </body>
